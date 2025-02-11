@@ -9,6 +9,6 @@ import { UserModule } from './user/user.module';
     MatchModule,
     UserModule,
   ],
-  
+
 })
 export class AppModule {}

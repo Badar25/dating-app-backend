@@ -18,7 +18,9 @@ export class UserService {
     return this.userModel.findById(id).exec();
   }
 
-  async getAllUsers(): Promise<User[]> {
-    return this.userModel.find().exec();
+  async getAllUsers(id?: string): Promise<User[]> {
+    console.log(`id: ${id}`);
+    if(!id) return this.userModel.find().exec();
+    return this.userModel.find({ _id: { $ne: id } }).exec();
   }
 }

@@ -4,13 +4,17 @@ import { MatchService } from "./match.service";
 import { MatchController } from "./match.controller";
 import { Like, LikeSchema } from "src/match/schemas/like.schema";
 import { Match, MatchSchema } from "./schemas/match.schema";
+import { User, UserSchema } from '../user/schemas/user.schema';
 
 @Module({
   imports: [
-    MongooseModule.forFeature([{ name: Like.name, schema: LikeSchema }]),
-    MongooseModule.forFeature([{ name: Match.name, schema: MatchSchema }]),
+    MongooseModule.forFeature([
+      { name: Match.name, schema: MatchSchema },
+      { name: Like.name, schema: LikeSchema },
+      { name: User.name, schema: UserSchema }
+    ])
   ],
-  controllers: [MatchController],
   providers: [MatchService],
+  controllers: [MatchController],
 })
 export class MatchModule {}
